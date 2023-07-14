@@ -5,7 +5,7 @@ import (
 	"testing"
 )
 
-var simpleDelimParser Parser = Parser{*regexp.MustCompile(".|~ | & ")}
+var simpleDelimParser Parser = Parser{*regexp.MustCompile(".|~ | & "), map[string]Operator{}}
 
 func TestTokensOnEmptyLine(t *testing.T) {
 	got := simpleDelimParser.tokens("")

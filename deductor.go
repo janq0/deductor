@@ -5,9 +5,25 @@ import (
 	"strings"
 )
 
+// Is anything other than Variable
+type Operator int
+
+const (
+	therefore Operator = iota
+	leftParen
+	rightParen
+	negation
+	conjunction
+	disjunction
+	conditional
+	biconditional
+)
+
+type Variable string
+
 type Parser struct {
-	matchDelimiters regexp.Regexp
-	// OperatorByString map[string]Operator
+	matchDelimiters  regexp.Regexp
+	OperatorByString map[string]Operator
 }
 
 func (t *Parser) tokens(line string) []string {
