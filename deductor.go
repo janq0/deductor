@@ -5,11 +5,15 @@ import (
 	"strings"
 )
 
-// Is anything other than Variable
-type Operator int
+type Token struct {
+	type_ TokenType
+	value string
+}
+
+type TokenType int
 
 const (
-	therefore Operator = iota
+	therefore TokenType = iota
 	leftParen
 	rightParen
 	negation
@@ -17,14 +21,15 @@ const (
 	disjunction
 	conditional
 	biconditional
+	variable
 )
-
-type Variable string
 
 type Parser struct {
 	matchDelimiters  regexp.Regexp
 	OperatorByLexeme map[string]Operator
 }
+
+func (t *Parser) tokens(lexemes []string) []
 
 func (t *Parser) lexemes(line string) []string {
 	delimiters := t.matchDelimiters.FindAllString(line, -1)
