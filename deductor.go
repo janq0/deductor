@@ -23,10 +23,10 @@ type Variable string
 
 type Parser struct {
 	matchDelimiters  regexp.Regexp
-	OperatorByString map[string]Operator
+	OperatorByLexeme map[string]Operator
 }
 
-func (t *Parser) tokens(line string) []string {
+func (t *Parser) lexemes(line string) []string {
 	delimiters := t.matchDelimiters.FindAllString(line, -1)
 	nondelimiters := t.matchDelimiters.Split(line, -1)
 	result := make([]string, 0, len(delimiters)+len(nondelimiters))
