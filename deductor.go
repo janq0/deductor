@@ -25,11 +25,9 @@ const (
 )
 
 type Parser struct {
-	matchDelimiters  regexp.Regexp
-	OperatorByLexeme map[string]Operator
+	matchDelimiters regexp.Regexp
+	TokenByLexeme   map[string]Token
 }
-
-func (t *Parser) tokens(lexemes []string) []
 
 func (t *Parser) lexemes(line string) []string {
 	delimiters := t.matchDelimiters.FindAllString(line, -1)
